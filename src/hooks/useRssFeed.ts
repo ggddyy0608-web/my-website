@@ -14,8 +14,7 @@ interface RssFeedState {
   error: boolean
 }
 
-const RSS_URL = 'https://rss.blog.naver.com/banbanex.xml'
-const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=12`
+const API_URL = '/api/blog'
 
 export function useRssFeed(): RssFeedState {
   const [state, setState] = useState<RssFeedState>({
