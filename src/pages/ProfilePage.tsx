@@ -175,6 +175,7 @@ export function ProfilePage() {
           </div>
         </motion.section>
       </main>
+
     </div>
   )
 }

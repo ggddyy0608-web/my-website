@@ -8,31 +8,26 @@ export function Header() {
           BANBAN TRAINING CENTER
         </NavLink>
         <nav className="flex items-center gap-1">
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) =>
-              `px-4 py-1.5 rounded-md text-sm font-medium whitespace-nowrap transition-colors ${
-                isActive
-                  ? 'bg-amber-400 text-black'
-                  : 'text-zinc-400 hover:text-white hover:bg-zinc-800'
-              }`
-            }
-          >
-            프로필
-          </NavLink>
-          <NavLink
-            to="/blog"
-            className={({ isActive }) =>
-              `px-4 py-1.5 rounded-md text-sm font-medium whitespace-nowrap transition-colors ${
-                isActive
-                  ? 'bg-amber-400 text-black'
-                  : 'text-zinc-400 hover:text-white hover:bg-zinc-800'
-              }`
-            }
-          >
-            블로그
-          </NavLink>
+          {[
+            { to: '/', label: '메인', end: true },
+            { to: '/profile', label: '프로필', end: false },
+            { to: '/blog', label: '블로그', end: false },
+          ].map(({ to, label, end }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={end}
+              className={({ isActive }) =>
+                `px-4 py-1.5 rounded-md text-sm font-medium whitespace-nowrap transition-colors ${
+                  isActive
+                    ? 'bg-amber-400 text-black'
+                    : 'text-zinc-400 hover:text-white hover:bg-zinc-800'
+                }`
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
         </nav>
       </div>
     </header>
