@@ -5,7 +5,7 @@ const RSS_URL = 'https://rss.blog.naver.com/banbanex.xml'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Cache-Control', 's-maxage=1800')
+  res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=86400')
 
   try {
     const response = await fetch(RSS_URL, {

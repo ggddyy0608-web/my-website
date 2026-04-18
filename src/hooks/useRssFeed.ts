@@ -15,15 +15,38 @@ interface RssFeedState {
 }
 
 const API_URL = '/api/blog'
+const CACHE_KEY = 'rss_cache'
+const CACHE_TTL = 1000 * 60 * 10 // 10분
+
+function getCache(): RssItem[] | null {
+  try {
+    const raw = sessionStorage.getItem(CACHE_KEY)
+    if (!raw) return null
+    const { items, ts } = JSON.parse(raw)
+    if (Date.now() - ts > CACHE_TTL) return null
+    return items
+  } catch {
+    return null
+  }
+}
+
+function setCache(items: RssItem[]) {
+  try {
+    sessionStorage.setItem(CACHE_KEY, JSON.stringify({ items, ts: Date.now() }))
+  } catch {}
+}
 
 export function useRssFeed(): RssFeedState {
+  const cached = getCache()
   const [state, setState] = useState<RssFeedState>({
-    items: [],
-    loading: true,
+    items: cached ?? [],
+    loading: cached === null,
     error: false,
   })
 
   useEffect(() => {
+    if (cached !== null) return
+
     const controller = new AbortController()
 
     fetch(API_URL, { signal: controller.signal })
@@ -33,7 +56,9 @@ export function useRssFeed(): RssFeedState {
       })
       .then((data) => {
         if (data.status !== 'ok') throw new Error('rss error')
-        setState({ items: data.items ?? [], loading: false, error: false })
+        const items = data.items ?? []
+        setCache(items)
+        setState({ items, loading: false, error: false })
       })
       .catch((err) => {
         if (err.name === 'AbortError') return
