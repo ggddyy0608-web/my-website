@@ -43,7 +43,7 @@ export function ProfilePage() {
               물리치료사 출신 운동지도사
             </span>
             <h1 className="text-6xl md:text-7xl font-black tracking-tight mb-4">강동윤</h1>
-            <div className="w-14 h-1 bg-amber-400 mb-6" />
+            <div className="w-14 h-1 bg-amber-400 mb-15" />
             <p className="text-zinc-400 text-base leading-relaxed max-w-md">
               물리치료학 전공 박사과정 · 재활 전문 운동지도사<br />
               신체 기능 회복과 건강한 삶을 위한 맞춤형 운동 프로그램 제공
