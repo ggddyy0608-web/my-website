@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import profileImage from '../assets/profile_bare.png'
 
 const BANBAN_MAP_URL = 'https://map.naver.com/p/entry/place/2014106715'
@@ -77,6 +78,16 @@ export function LocationSection() {
                 한의원 협진 알아보기
               </a>
             </div>
+
+            <div className="h-px w-24 bg-zinc-800 mt-8" />
+
+            <Link
+              to="/profile"
+              className="flex items-center gap-1.5 text-zinc-500 hover:text-amber-400 text-xs transition-colors mt-4 group w-fit"
+            >
+              강동윤 운동지도사 프로필 보기
+              <span className="group-hover:translate-x-0.5 transition-transform duration-150">→</span>
+            </Link>
           </motion.div>
         </div>
 
