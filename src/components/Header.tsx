@@ -4,8 +4,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-zinc-900/95 backdrop-blur border-b border-zinc-800">
       <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-        <NavLink to="/" className="text-amber-400 font-bold tracking-widest text-sm">
-          BANBAN TRAINING CENTER
+        <NavLink to="/" className="text-amber-400 font-bold tracking-widest text-sm whitespace-nowrap">
+          <span className="md:hidden">BANBAN</span>
+          <span className="hidden md:inline">BANBAN TRAINING CENTER</span>
         </NavLink>
         <nav className="flex items-center gap-1">
           {[

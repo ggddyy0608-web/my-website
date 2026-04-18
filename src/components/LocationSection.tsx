@@ -19,6 +19,8 @@ export function LocationSection() {
             className="absolute right-[14%] bottom-0 h-[88%] w-auto object-contain object-bottom"
             style={{ opacity: 1 }}
           />
+          {/* 모바일 전용 어두운 오버레이 */}
+          <div className="absolute inset-0 bg-zinc-950/60 md:hidden" />
           {/* 왼쪽 페이드 */}
           <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 from-[30%] via-zinc-950/45 via-[48%] to-transparent" />
           {/* 오른쪽 페이드 */}
