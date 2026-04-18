@@ -1,0 +1,40 @@
+import { NavLink } from 'react-router-dom'
+
+export function Header() {
+  return (
+    <header className="sticky top-0 z-50 bg-zinc-900/95 backdrop-blur border-b border-zinc-800">
+      <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+        <NavLink to="/" className="text-amber-400 font-bold tracking-widest text-sm">
+          BANBAN TRAINING CENTER
+        </NavLink>
+        <nav className="flex items-center gap-1">
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              `px-4 py-1.5 rounded-md text-sm font-medium whitespace-nowrap transition-colors ${
+                isActive
+                  ? 'bg-amber-400 text-black'
+                  : 'text-zinc-400 hover:text-white hover:bg-zinc-800'
+              }`
+            }
+          >
+            프로필
+          </NavLink>
+          <NavLink
+            to="/blog"
+            className={({ isActive }) =>
+              `px-4 py-1.5 rounded-md text-sm font-medium whitespace-nowrap transition-colors ${
+                isActive
+                  ? 'bg-amber-400 text-black'
+                  : 'text-zinc-400 hover:text-white hover:bg-zinc-800'
+              }`
+            }
+          >
+            블로그
+          </NavLink>
+        </nav>
+      </div>
+    </header>
+  )
+}
